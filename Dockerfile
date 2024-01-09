@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 #RUN gunicorn app:app & python3 main.py
-RUN python3 main.py
+CMD python3 main.py
