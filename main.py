@@ -2,14 +2,15 @@ import os
 from telethon import TelegramClient, events
 import logging
 from telethon.sessions import StringSession
+from decouple import config
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.DEBUG)
 
-API_ID = os.getenv("API_ID")
-API_HASH = os.getenv("API_HASH")
-SESSION = os.getenv("SESSION")
-blacklisted_words = os.getenv("BLACKLISTED_WORDS")
-CHANNEL_LINK = os.getenv("CHANNEL_LINK")
+API_ID = config("API_ID")
+API_HASH = config("API_HASH")
+SESSION = config("SESSION")
+blacklisted_words = config("BLACKLISTED_WORDS")
+CHANNEL_LINK = config("CHANNEL_LINK")
 
 client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 
