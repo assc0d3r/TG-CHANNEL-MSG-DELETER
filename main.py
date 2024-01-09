@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.DEBUG)
 
-APP_ID = int(os.environ['APP_ID'])
+#APP_ID = int(os.environ['APP_ID'])
 API_HASH = config("API_HASH")
 BOT_TOKEN = config("BOT_TOKEN")
 CHANNEL_NAME = config("CHANNEL_NAME")
@@ -57,5 +57,5 @@ class KeywordDeleter:
         self.client.run_until_disconnected()
 
 if __name__ == '__main__':
-    kd = KeywordDeleter('APP_ID', 'API_HASH', 'BOT_TOKEN', 'DB_URI', 'telegram_bot')
+    kd = KeywordDeleter('20756772', 'API_HASH', 'BOT_TOKEN', 'DB_URI', 'telegram_bot')
     kd.run()
