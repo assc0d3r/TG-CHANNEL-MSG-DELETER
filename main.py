@@ -4,7 +4,7 @@ from telethon import TelegramClient, events
 API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
 SESSION = os.getenv('SESSION')
-blacklisted_words = os.getenv('BLACKLISTED_WORDS').split(',')
+blacklisted_words = os.getenv('BLACKLISTED_WORDS')
 CHANNEL_LINK = os.getenv('CHANNEL_LINK')
 
 client = TelegramClient(stringsession(SESSION), API_ID, API_HASH)
