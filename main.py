@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import asyncio
 from decouple import config
 import logging
-
+import os
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.DEBUG)
 
-APP_ID = int(os.environ['APP_ID']
+APP_ID = int(os.environ['APP_ID'])
 API_HASH = config("API_HASH")
 BOT_TOKEN = config("BOT_TOKEN")
 CHANNEL_NAME = config("CHANNEL_NAME")
