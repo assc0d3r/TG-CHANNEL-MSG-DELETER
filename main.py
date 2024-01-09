@@ -16,7 +16,7 @@ client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 
 async def main():
     async for message in client.iter_messages(CHANNEL_LINK):
-         blacklisted_words = item.get('blacklisted_words')
+         blacklisted_words = item.get('blacklisted_words').split()
     if blacklisted_words is not None:
         if any(word in message.text for word in blacklisted_words):
             await message.delete()
