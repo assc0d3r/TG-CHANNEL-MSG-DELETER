@@ -57,5 +57,5 @@ class KeywordDeleter:
         self.client.run_until_disconnected()
 
 if __name__ == '__main__':
-    kd = KeywordDeleter(API_ID, 'API_HASH', BOT_TOKEN, 'DB_URI', 'telegram_bot')
+    kd = KeywordDeleter('API_ID', 'API_HASH', 'BOT_TOKEN', 'DB_URI', 'telegram_bot')
     kd.run()
