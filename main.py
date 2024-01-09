@@ -56,6 +56,6 @@ class KeywordDeleter:
         asyncio.get_event_loop().run_until_complete(self.delete_past_messages('CHANNEL_NAME'))
         self.client.run_until_disconnected()
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     kd = KeywordDeleter(API_ID, 'API_HASH', BOT_TOKEN, 'DB_URI', 'telegram_bot')
     kd.run()
