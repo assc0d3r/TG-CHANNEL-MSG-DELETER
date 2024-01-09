@@ -1,5 +1,9 @@
 import os
 from telethon import TelegramClient, events
+import logging
+from telethon.sessions import StringSession
+
+logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.DEBUG)
 
 API_ID = os.getenv('API_ID')
 API_HASH = os.getenv('API_HASH')
