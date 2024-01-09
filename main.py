@@ -1,6 +1,13 @@
 from telethon import TelegramClient, events, utils
 from pymongo import MongoClient
 import asyncio
+from decouple import config
+
+api_id = config("API_ID", default=None, cast=int)
+api_hash = config("API_HASH", default=None)
+token = config("TOKEN")
+CHAT_LIST = config("CHAT_LIST")
+YOUR_CHANNEL_NAME = config("YOUR_CHANNEL_NAME")
 
 class KeywordDeleter:
     def __init__(self, api_id, api_hash, token, db_uri, db_name):
