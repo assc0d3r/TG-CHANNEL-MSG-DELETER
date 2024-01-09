@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.DEBUG)
 
-API_ID = config("API_ID")
+API_ID = config(int("API_ID"))
 API_HASH = config("API_HASH")
 BOT_TOKEN = config("BOT_TOKEN")
 CHANNEL_NAME = config("CHANNEL_NAME")
