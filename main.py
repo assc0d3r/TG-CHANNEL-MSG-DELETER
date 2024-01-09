@@ -7,7 +7,7 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 
 API_ID = os.getenv("API_ID")
 API_HASH = os.getenv("API_HASH")
-SESSION = os.getenv('SESSION")
+SESSION = os.getenv("SESSION")
 blacklisted_words = os.getenv("BLACKLISTED_WORDS")
 CHANNEL_LINK = os.getenv("CHANNEL_LINK")
 
