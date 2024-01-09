@@ -15,7 +15,7 @@ async def main():
     if blacklisted_words is not None:
         if any(word in message.text for word in blacklisted_words):
             await message.delete()
-            else:
+    else:
         print("Blacklisted_words is missing or None.")
 
 with client:
