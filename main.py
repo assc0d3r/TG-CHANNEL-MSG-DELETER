@@ -1,7 +1,17 @@
-from telethon import TelegramClient, events, utils
+from telethon import TelegramClient, events, utils, errors
 from pymongo import MongoClient
 import asyncio
 from decouple import config
+import logging
+
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt="%d-%b-%y %H:%M:%S",
+    filename='logfile.log',
+)
+logging.getLogger("pyrogram").setLevel(logging.DEBUG)
 
 API_ID = config("API_ID", default=None, cast=int)
 API_HASH = config("API_HASH", default=None)
