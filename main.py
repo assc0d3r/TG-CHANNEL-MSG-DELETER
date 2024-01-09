@@ -21,7 +21,7 @@ DB_URI = config("DB_URI")
 DB_NAME = config("DB_NAME")                
 
 class KeywordDeleter:
-    def __init__(self, api_id, api_hash, token, db_uri, db_name):
+    def __init__(self, API_ID, API_HASH, BOT_TOKEN, DB_URI, DB_NAME):
         self.client = TelegramClient('bot', api_id, api_hash).start(bot_token=token)
         self.db = MongoClient(db_uri)[db_name]
         self.keywords = set(self.db.keywords.find_one()['keywords'])
@@ -57,5 +57,5 @@ class KeywordDeleter:
         self.client.run_until_disconnected()
 
 if __name__ == '__main__':
-    kd = KeywordDeleter(API_ID, 'API_HASH', BOT_TOKEN, 'mongodb://localhost:27017', 'telegram_bot')
+    kd = KeywordDeleter(API_ID, 'API_HASH', BOT_TOKEN, 'DB_URI', 'telegram_bot')
     kd.run()
