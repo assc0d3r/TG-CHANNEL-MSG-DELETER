@@ -17,8 +17,8 @@ API_ID = config("API_ID", default=None, cast=int)
 API_HASH = config("API_HASH", default=None)
 BOT_TOKEN = config("BOT_TOKEN")
 CHANNEL_NAME = config("CHANNEL_NAME")
-db_uri = CONFIG("DB_URI")
-db_name = CONFIG("DB_NAME")                
+db_uri = config("DB_URI")
+db_name = config("DB_NAME")                
 
 class KeywordDeleter:
     def __init__(self, api_id, api_hash, token, db_uri, db_name):
