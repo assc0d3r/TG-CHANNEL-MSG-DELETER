@@ -13,9 +13,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY . /app/
 
-# Specify the command to run your bot.py script
-#RUN streamlit run streamlit_app.py
 #RUN gunicorn app:app & python3 main.py
 RUN python3 main.py
-#CMD ["gunicorn", "app:app & python3 viper.py"]
-#CMD ["python", "viper.py"]
