@@ -5,11 +5,11 @@ from telethon.sessions import StringSession
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.DEBUG)
 
-API_ID = os.getenv('API_ID')
-API_HASH = os.getenv('API_HASH')
-SESSION = os.getenv('SESSION')
-blacklisted_words = os.getenv('BLACKLISTED_WORDS')
-CHANNEL_LINK = os.getenv('CHANNEL_LINK')
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+SESSION = os.getenv('SESSION")
+blacklisted_words = os.getenv("BLACKLISTED_WORDS")
+CHANNEL_LINK = os.getenv("CHANNEL_LINK")
 
 client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 
