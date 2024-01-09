@@ -3,11 +3,10 @@ from pymongo import MongoClient
 import asyncio
 from decouple import config
 
-api_id = config("API_ID", default=None, cast=int)
-api_hash = config("API_HASH", default=None)
-token = config("TOKEN")
-CHAT_LIST = config("CHAT_LIST")
-YOUR_CHANNEL_NAME = config("YOUR_CHANNEL_NAME")
+API_ID = config("API_ID", default=None, cast=int)
+API_HASH = config("API_HASH", default=None)
+BOT_TOKEN = config("BOT_TOKEN")
+CHANNEL_NAME = config("CHANNEL_NAME")
 
 class KeywordDeleter:
     def __init__(self, api_id, api_hash, token, db_uri, db_name):
@@ -42,9 +41,9 @@ class KeywordDeleter:
         self.client.add_event_handler(self.start, events.NewMessage(pattern='/start'))
         self.client.add_event_handler(self.add_keyword, events.NewMessage(pattern='/addkeyword'))
         self.client.add_event_handler(self.delete_message, events.NewMessage())
-        asyncio.get_event_loop().run_until_complete(self.delete_past_messages('YOUR_CHANNEL_NAME'))
+        asyncio.get_event_loop().run_until_complete(self.delete_past_messages('CHANNEL_NAME'))
         self.client.run_until_disconnected()
 
 if __name__ == '__main__':
-    kd = KeywordDeleter('YOUR_API_ID', 'YOUR_API_HASH', 'YOUR_BOT_TOKEN', 'mongodb://localhost:27017', 'telegram_bot')
+    kd = KeywordDeleter('API_ID', 'API_HASH', 'BOT_TOKEN', 'mongodb://localhost:27017', 'telegram_bot')
     kd.run()
