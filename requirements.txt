@@ -1,10 +1,5 @@
 telethon
-pyrogram
-pymongo
 cryptg
 Flask
 gunicorn
 TgCrypto 
-python-decouple
-pillow
-hachoir
