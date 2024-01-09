@@ -7,7 +7,7 @@ SESSION = os.getenv('SESSION')
 blacklisted_words = os.getenv('BLACKLISTED_WORDS')
 CHANNEL_LINK = os.getenv('CHANNEL_LINK')
 
-client = TelegramClient(stringsession(SESSION), API_ID, API_HASH)
+client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 
 async def main():
     async for message in client.iter_messages(CHANNEL_LINK):
