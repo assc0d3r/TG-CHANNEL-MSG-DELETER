@@ -22,7 +22,7 @@ DB_NAME = config("DB_NAME")
 
 class KeywordDeleter:
     def __init__(self, API_ID, API_HASH, BOT_TOKEN, DB_URI, DB_NAME):
-        self.client = TelegramClient('bot', api_id, api_hash).start(bot_token=token)
+        self.client = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
         self.db = MongoClient(db_uri)[db_name]
         self.keywords = set(self.db.keywords.find_one()['keywords'])
 
