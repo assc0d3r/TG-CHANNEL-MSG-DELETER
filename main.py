@@ -13,7 +13,7 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.DEBUG)
 
-API_ID = config(int("API_ID"))
+APP_ID = config("APP_ID", default=None, cast=int)
 API_HASH = config("API_HASH")
 BOT_TOKEN = config("BOT_TOKEN")
 CHANNEL_NAME = config("CHANNEL_NAME")
@@ -21,8 +21,8 @@ DB_URI = config("DB_URI")
 DB_NAME = config("DB_NAME")                
 
 class KeywordDeleter:
-    def __init__(self, API_ID, API_HASH, BOT_TOKEN, DB_URI, DB_NAME):
-        self.client = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+    def __init__(self, APP_ID, API_HASH, BOT_TOKEN, DB_URI, DB_NAME):
+        self.client = TelegramClient('bot', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
         self.db = MongoClient(DB_URI)[DB_NAME]
         self.keywords = set(self.db.keywords.find_one()['keywords'])
 
@@ -57,5 +57,5 @@ class KeywordDeleter:
         self.client.run_until_disconnected()
 
 if __name__ == '__main__':
-    kd = KeywordDeleter('API_ID', 'API_HASH', 'BOT_TOKEN', 'DB_URI', 'telegram_bot')
+    kd = KeywordDeleter('APP_ID', 'API_HASH', 'BOT_TOKEN', 'DB_URI', 'telegram_bot')
     kd.run()
