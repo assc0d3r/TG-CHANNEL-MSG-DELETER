@@ -29,7 +29,11 @@ if "MONGODB_URI" not in config:
 if "KEYWORDS_COLLECTION" not in config:
     logger.error("Missing required environment variable: KEYWORDS_COLLECTION")
     exit(1)
-
+    
+if "CHANNEL_ID" not in config:
+    logger.error("Missing required environment variable: CHANNEL_ID")
+    exit(1)
+    
 # Create a MongoDB client
 try:
     client = pymongo.MongoClient(config["MONGODB_URI"])
