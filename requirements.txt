@@ -5,3 +5,4 @@ cryptg
 Flask
 gunicorn
 TgCrypto 
+logging
