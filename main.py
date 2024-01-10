@@ -9,11 +9,6 @@ from decouple import config
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
 
-# Load configuration from environment or config file
-config = {}
-for key, value in os.environ.items():
-    config[key] = value
-
 # Define environment variables if not provided in config file
 TG_BOT_TOKEN = config("TG_BOT_TOKEN")
 KEYWORDS_COLLECTION= config("KEYWORDS_COLLECTION")
