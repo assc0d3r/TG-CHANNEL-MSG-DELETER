@@ -24,7 +24,7 @@ except pymongo.MongoClient as e:
     exit(1)
 
 database = client["your_database"]
-keywords_collection = database[config["KEYWORDS_COLLECTION"]]
+keywords_collection = database[config("KEYWORDS_COLLECTION")]
 
 # Define a helper function to delete a media file from a channel
 async def delete_media_file(channel_id, media_file_path):
@@ -78,7 +78,7 @@ async def handle_command(message):
 
 # Create a Telegram client instance
 async def bardmsgdel():
-    async with TelegramClient(config["TG_SESSION_STRING"], config["TG_BOT_TOKEN"]) as client:
+    async with TelegramClient(config("TG_SESSION_STRING"), config("TG_BOT_TOKEN")) as client:
         # Get all keywords from the MongoDB collection
         keywords = list(keywords_collection.find())
 
