@@ -3,7 +3,7 @@ from telethon import TelegramClient, events, types
 from bson import ObjectId
 import pymongo
 import logging
-import os
+from decouple import config
 
 # Initialize logger
 logging.basicConfig(level=logging.INFO)
@@ -15,25 +15,10 @@ for key, value in os.environ.items():
     config[key] = value
 
 # Define environment variables if not provided in config file
-if "TG_BOT_TOKEN" not in config:
-    logger.error("Missing required environment variable: TG_BOT_TOKEN")
-    exit(1)
-
-if "TG_SESSION_STRING" not in config:
-    logger.error("Missing required environment variable: TG_SESSION_STRING")
-    exit(1)
-
-if "MONGODB_URI" not in config:
-    logger.error("Missing required environment variable: MONGODB_URI")
-    exit(1)
-
-if "KEYWORDS_COLLECTION" not in config:
-    logger.error("Missing required environment variable: KEYWORDS_COLLECTION")
-    exit(1)
-    
-if "CHANNEL_ID" not in config:
-    logger.error("Missing required environment variable: CHANNEL_ID")
-    exit(1)
+TG_BOT_TOKEN = config("TG_BOT_TOKEN")
+KEYWORDS_COLLECTION= config("KEYWORDS_COLLECTION")
+TG_SESSION_STRING= config("TG_SESSION_STRING")
+CHANNEL_ID = config("CHANNEL_ID")
     
 # Create a MongoDB client
 try:
