@@ -4,10 +4,11 @@ from bson import ObjectId
 import pymongo
 import logging
 from decouple import config
+import telethon.sync
 
-# Initialize logger
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger()
+import logging
+logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
+level=logging.WARNING)
 
 # Define environment variables if not provided in config file
 TG_BOT_TOKEN = config("TG_BOT_TOKEN")
@@ -103,4 +104,6 @@ async def bardmsgdel():
                         await delete_media_file(channel_id, media_file_path)
             logger.error(f"Error during execution: {e}")
         exit(1)
-    client.run_until_disconnected(bardmsgdel())
+    #client.run_until_disconnected(bardmsgdel())
+if __name__ == '__bardmsgdel__':
+   asyncio.run(bardmsgdel())
