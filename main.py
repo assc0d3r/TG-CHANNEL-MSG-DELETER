@@ -21,7 +21,7 @@ MONGODB_URI = config("MONGODB_URI")
 try:
     client = pymongo.MongoClient("MONGODB_URI")
 except pymongo.MongoClient as e:
-    logger.error(f"Error connecting to MongoDB: {e}")
+    print(f"Error connecting to MongoDB: {e}")
     exit(1)
 
 database = client["your_database"]
@@ -36,22 +36,22 @@ async def delete_media_file(channel_id, media_file_path):
                 id=await client.get_file_id(media_file_path)
             )
         ).delete()
-        logger.info(f"Deleted media file in channel {channel_id}: {media_file_path}")
+        print(f"Deleted media file in channel {channel_id}: {media_file_path}")
     except Exception as e:
-        logger.error(f"Error deleting media file: {e}")
+        print(f"Error deleting media file: {e}")
 
 # Define a helper function to add a keyword to the MongoDB collection
 async def add_keyword(message):
     keyword = message.text.split()[1]
     try:
         keywords_collection.insert_one({"text": keyword})
-        logger.info(f"Added keyword '{keyword}' to MongoDB collection")
+        print(f"Added keyword '{keyword}' to MongoDB collection")
         await message.reply(f"Keyword '{keyword}' added successfully")
     except pymongo.errors.DuplicateKeyError:
-        logger.info(f"Keyword '{keyword}' already exists in MongoDB collection")
+        print(f"Keyword '{keyword}' already exists in MongoDB collection")
         await message.reply(f"Keyword '{keyword}' already exists.")
     except Exception as e:
-        logger.error(f"Error adding keyword to MongoDB: {e}")
+        print(f"Error adding keyword to MongoDB: {e}")
         await message.reply(f"Error adding keyword: {e}")
 
 # Define a helper function to delete a keyword from the MongoDB collection
@@ -59,13 +59,13 @@ async def delete_keyword(message):
     keyword = message.text.split()[1]
     try:
         keywords_collection.delete_one({"text": keyword})
-        logger.info(f"Deleted keyword '{keyword}' from MongoDB collection")
+        print(f"Deleted keyword '{keyword}' from MongoDB collection")
         await message.reply(f"Keyword '{keyword}' deleted successfully")
     except pymongo.errors.NotFoundError:
-        logger.info(f"Keyword '{keyword}' not found in MongoDB collection")
+        print(f"Keyword '{keyword}' not found in MongoDB collection")
         await message.reply(f"Keyword '{keyword}' not found.")
     except Exception as e:
-        logger.error(f"Error deleting keyword from MongoDB: {e}")
+        print(f"Error deleting keyword from MongoDB: {e}")
         await message.reply(f"Error deleting keyword: {e}")
 
 # Define a helper function to handle user commands
@@ -98,11 +98,11 @@ async def bardmsgdel():
                 for media_file in media_files:
                     if keyword_text in media_file.caption and media_file.media:
                         media_file_path = media_file.media.document.file_path
-                        logger.info(f"Found media matching keyword '{keyword_text}' in channel {channel_id}: {media_file_path}")
+                        print(f"Found media matching keyword '{keyword_text}' in channel {channel_id}: {media_file_path}")
 
                         # Delete the media file
                         await delete_media_file(channel_id, media_file_path)
-            logger.error(f"Error during execution: {e}")
+            print(f"Error during execution: {e}")
         exit(1)
     #client.run_until_disconnected(bardmsgdel())
 if __name__ == '__bardmsgdel__':
