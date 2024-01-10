@@ -95,10 +95,12 @@ async def handle_command(message):
         await message.reply("Invalid command.")
 
 # Create a Telegram client instance
-async with TelegramClient(config["TG_SESSION_STRING"], config["TG_BOT_TOKEN"]) as client:
-    # Get all keywords from the MongoDB collection
-    keywords = list(keywords_collection.find())
-     # Process each channel and search for media matching the keywords
+try:
+    async with TelegramClient(config["TG_SESSION_STRING"], config["TG_BOT_TOKEN"]) as client:
+        # Get all keywords from the MongoDB collection
+        keywords = list(keywords_collection.find())
+
+        # Process each channel and search for media matching the keywords
         for channel in await client.get_dialogs(limit=200):
             if channel.type != types.InputChannelType.CHANNEL:
                 continue
