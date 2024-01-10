@@ -8,7 +8,7 @@ import telethon.sync
 
 import logging
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-level=logging.WARNING)
+level=logging.DEBUG)
 
 # Define environment variables if not provided in config file
 TG_BOT_TOKEN = config("TG_BOT_TOKEN")
