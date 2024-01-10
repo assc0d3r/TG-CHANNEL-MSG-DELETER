@@ -3,6 +3,7 @@ from telethon import TelegramClient, events, types
 from bson import ObjectId
 import pymongo
 import logging
+import os
 
 # Initialize logger
 logging.basicConfig(level=logging.INFO)
