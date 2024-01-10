@@ -18,8 +18,8 @@ MONGODB_URI = config("MONGODB_URI")
     
 # Create a MongoDB client
 try:
-    client = pymongo.MongoClient(config["MONGODB_URI"])
-except pymongo.MongoClientError as e:
+    client = pymongo.MongoClient(["MONGODB_URI"])
+except pymongo.MongoClient as e:
     logger.error(f"Error connecting to MongoDB: {e}")
     exit(1)
 
