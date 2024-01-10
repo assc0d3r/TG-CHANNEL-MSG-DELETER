@@ -95,7 +95,7 @@ async def handle_command(message):
         await message.reply("Invalid command.")
 
 # Create a Telegram client instance
-try:
+async def bardmsgdel():
     async with TelegramClient(config["TG_SESSION_STRING"], config["TG_BOT_TOKEN"]) as client:
         # Get all keywords from the MongoDB collection
         keywords = list(keywords_collection.find())
@@ -119,7 +119,6 @@ try:
 
                         # Delete the media file
                         await delete_media_file(channel_id, media_file_path)
-
-except Exception as e:
-    logger.error(f"Error during execution: {e}")
-    exit(1)
+            logger.error(f"Error during execution: {e}")
+        exit(1)
+    client.run_until_disconnected(bardmsgdel())
