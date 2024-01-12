@@ -19,7 +19,7 @@ amogh= config("TG_SESSION_STRING")
 channel_id= config("CHANNEL_ID")
 api_hash= config("API_HASH")
 
-client = TelegramClient(StringSession(amogh), api_id, api_hash).start(bot_token=bot_token)
+client = TelegramClient(StringSession(amogh), api_id, api_hash)
 
 async def delete_messages(keyword):
     async for message in client.iter_messages(channel_id):
