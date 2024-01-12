@@ -18,6 +18,7 @@ keywords= config("KEYWORDS")
 #amogh= config("TG_SESSION_STRING")
 channel_id= config("CHANNEL_ID")
 api_hash= config("API_HASH")
+bot_token= config("BOT_TOKEN")
 
 client = TelegramClient('amogh', api_id, api_hash).start(bot_token=bot_token)
 
