@@ -15,12 +15,12 @@ level=logging.WARNING)
 # Define environment variables if not provided in config file
 api_id = config("API_ID")
 keywords= config("KEYWORDS")
-amogh= config("TG_SESSION_STRING")
+SESSION= config("TG_SESSION_STRING")
 channel_id= config("CHANNEL_ID")
 api_hash= config("API_HASH")
 bot_token= config("BOT_TOKEN")
 
-client = TelegramClient(StringSession(amogh), api_id, api_hash)
+client = TelegramClient(StringSession(SESSION), api_id, api_hash)
 
 async def delete_messages(keyword):
     async for message in client.iter_messages(channel_id):
