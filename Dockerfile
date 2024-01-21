@@ -12,6 +12,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY . /app/
-EXPOSE 8000
-#RUN gunicorn app:app & python3 main.py
-CMD python3 main.py
+#EXPOSE 8000
+RUN gunicorn app:app & python3 main.py
+#CMD python3 main.py
