@@ -18,10 +18,10 @@ SESSION = os.getenv("SESSION")
 CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
 API_HASH = os.getenv("API_HASH")
 async def main():
-    client = TelegramClient('session_name', api_id, api_hash)
+    client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
     await client.start()
 
-    entity = await client.get_entity(channel_username)
+    entity = await client.get_entity(CHANNEL_USERNAME)
 
     async def process_media(message):
         if message.media and message.video:  # Check for video messages
@@ -31,7 +31,7 @@ async def main():
             # Process for files with names
             text = message.message
 
-            if re.search(keyword_pattern, text, flags=re.IGNORECASE):
+            if re.search(KEYWORD_PATTERN , text, flags=re.IGNORECASE):
                 try:
                     await message.delete()
                     print(f"Deleted video message with filename: {file_name}")
