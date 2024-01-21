@@ -3,7 +3,6 @@ import os
 from telethon import TelegramClient, events, types
 import logging
 import re
-from telethon.sync import TelegramClient, events
 from telethon.errors import FloodWaitError
 from telethon.sessions import StringSession
 
@@ -19,8 +18,9 @@ session= os.getenv("SESSION")
 channel_username= os.getenv("CHANNEL_USERNAME")
 api_hash= os.getenv("API_HASH")
 
-async def amogh():
+async def main():
     client = TelegramClient(StringSession(session), api_id, api_hash)
+    session = client.session.save()
     await client.start()
 
     entity = await client.get_entity(channel_username)
@@ -66,5 +66,5 @@ async def amogh():
     await monitor_new_messages()  # Then start live monitoring
     await client.run_until_disconnected()
 
-if __name__ == '__amogh__':
-    asyncio.run(amogh())
+if __name__ == '__main__':
+    asyncio.run(main())
