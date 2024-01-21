@@ -14,13 +14,13 @@ level=logging.WARNING)
 # Define environment variables if not provided in config file
 api_id = os.getenv("API_ID")
 keyword_pattern= os.getenv("KEYWORD_PATTERN")
-session= os.getenv("SESSION")
+SESSION= os.getenv("SESSION")
 channel_username= os.getenv("CHANNEL_USERNAME")
 api_hash= os.getenv("API_HASH")
 
 async def main():
-    client = TelegramClient(StringSession(session), api_id, api_hash)
-    session = client.session.save()
+    client = TelegramClient(StringSession(SESSION), api_id, api_hash)
+    SESSION = client.session.save()
     await client.start()
 
     entity = await client.get_entity(channel_username)
