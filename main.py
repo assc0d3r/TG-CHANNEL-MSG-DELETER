@@ -12,25 +12,25 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 level=logging.WARNING)
 
 # Define environment variables if not provided in config file
-api_id = os.getenv("API_ID")
-keyword_pattern= os.getenv("KEYWORD_PATTERN")
-SESSION= os.getenv("SESSION")
-channel_username= os.getenv("CHANNEL_USERNAME")
-api_hash= os.getenv("API_HASH")
+API_ID = os.getenv("API_ID")
+KEYWORD_PATTERN = os.getenv("KEYWORD_PATTERN")
+SESSION = os.getenv("SESSION")
+CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
+API_HASH = os.getenv("API_HASH")
 
 async def main():
-    client = TelegramClient(StringSession(SESSION), api_id, api_hash)
+    client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
     SESSION = client.session.save()
     await client.start()
 
-    entity = await client.get_entity(channel_username)
+    entity = await client.get_entity(CHANNEL_USERNAME)
 
     async def process_media(message):
         if message.media:
             file_name = message.file.name
             text = message.message
 
-            if re.search(keyword_pattern, text, flags=re.IGNORECASE):  # Case-insensitive match
+            if re.search(KEYWORD_PATTERN, text, flags=re.IGNORECASE):  # Case-insensitive match
                 try:
                     await message.delete()
                     print(f"Deleted message with filename: {file_name}")
