@@ -66,5 +66,5 @@ async def main():
     await monitor_new_messages()  # Then start live monitoring
     await client.run_until_disconnected()
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
     asyncio.run(main())
