@@ -17,9 +17,9 @@ KEYWORD_PATTERN = os.getenv("KEYWORD_PATTERN")
 SESSION = os.getenv("SESSION")
 CHANNEL_USERNAME = os.getenv("CHANNEL_USERNAME")
 API_HASH = os.getenv("API_HASH")
-
+client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 async def main():
-    client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
+    #client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
     SESSION = client.session.save()
     await client.start()
 
