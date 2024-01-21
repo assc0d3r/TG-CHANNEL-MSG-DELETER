@@ -66,4 +66,4 @@ async def amogh():
     await client.run_until_disconnected()
 
 if __name__ == '__amogh__':
-    asyncio.run(main())
+    asyncio.run(amogh())
