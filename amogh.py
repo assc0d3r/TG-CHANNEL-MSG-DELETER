@@ -20,7 +20,7 @@ API_HASH = os.getenv("API_HASH")
 client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 async def main():
     #client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
-    SESSION = client.session.save()
+    #SESSION = client.session.save()
     await client.start()
 
     entity = await client.get_entity(CHANNEL_USERNAME)
