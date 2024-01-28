@@ -31,7 +31,7 @@ async def main():
             # Process for files with names
             text = message.message
 
-            if re.search(KEYWORD_PATTERN , text, flags=re.IGNORECASE):
+            if re.search("(?ims).*KEYWORD_PATTERN" , text, flags=re.IGNORECASE):
                 try:
                     await message.delete()
                     print(f"Deleted video message with filename: {file_name}")
