@@ -34,7 +34,7 @@ async def main():
             if file_name:
                 text = message.message
 
-                if re.search(KEYWORD_PATTERN, text, flags=re.IGNORECASE):
+                if re.search(KEYWORD_PATTERN, text, re.IGNORECASE):
                 #if re.finditer(keyword_pattern, text, re.IGNORECASE):# | re.VERBOSE | re.MULTILINE):
                     try:
                         await message.delete()
