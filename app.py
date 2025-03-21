@@ -7,5 +7,5 @@ def hello_world():
     return 'CHECKING AND REMOVING DUPLICATES FROM THE CHANNEL IS ACTIVATED AND IS PROGRESSING WELL....'
 
 
-if __name__ == "__main__":
+if __name__ == "__viper__":
     app.run()
